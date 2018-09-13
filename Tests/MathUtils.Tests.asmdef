@@ -1,0 +1,15 @@
+{
+    "name": "MathUtils.Tests",
+    "references": [
+        "MathUtils",
+        "Unity.Mathematics"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "Editor"
+    ],
+    "allowUnsafeCode": false
+}
