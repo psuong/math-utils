@@ -60,8 +60,12 @@ namespace MathUtils {
         /// <param name="angle">The euler angle used to rotate.</param>
         /// <returns>A point rotated about a pivot given an angle.</returns>
         public static float3 RotateAbout(float3 pivot, float3 point, float3 angle) {
-            var direction = RotateAbout(quaternion.euler(angle), point - pivot);
-            return point + direction;
+            var radianAngle = new float3 {
+                x = math.radians(angle.x),
+                y = math.radians(angle.y),
+                z = math.radians(angle.z)
+            };
+            return RotateAbout(quaternion.eulerXYZ(radianAngle), point - pivot) + pivot;
         }
     }
 }
