@@ -58,7 +58,19 @@ namespace MathUtils.Tests {
 
             Debug.LogFormat("<color=#00ff00ff>Pivot: {0}, Rotated Point: {1}</color>", pivot, rotatedPoint);
             
-            Assert.GreaterOrEqual(pivot.z, rotatedPoint.z, "The rotated point is not behind the pivot!");
+            Assert.Greater(pivot.z, rotatedPoint.z, "The rotated point is not behind the pivot!");
+        }
+
+        [Test]
+        public void APointAlongZWithBackwardIsRotatedForwards() {
+            var pivot = new float3();
+            var backward = new float3(0, 0, -1f);
+
+            var rotatedPoint = RotationUtils.RotateAbout(pivot, backward, new float3(0, 180f, 0));
+
+            Debug.LogFormat("<color=#00ff00ff>Pivot: {0}, Rotated Point: {1}</color>", pivot, rotatedPoint);
+
+            Assert.Less(pivot.z, rotatedPoint.z, "The rotated point is not in front of the pivot!");
         }
     }
 }
