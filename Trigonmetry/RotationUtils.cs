@@ -5,6 +5,18 @@ namespace MathUtils {
     public static class RotationUtils {
 
         /// <summary>
+        /// Rotates a point around a pivot given an axis and an angle.
+        /// </summary>
+        /// <param name="point">The point to rotate around some pivot.</param>
+        /// <param name="pivot">The anchor point that others are orbiting around.</param>
+        /// <param name="axis">The axis to rotate around.</param>
+        /// <param name="angle">The magnitude of the angle to rotate.</param>
+        public static float3 RotateAbout(float3 point, float3 pivot, float3 axis, float angle) {
+            var rotation = quaternion.AxisAngle(axis, math.radians(angle));
+            return pivot + RotateAbout(rotation, point - pivot);
+        }
+
+        /// <summary>
         /// Rotates a point about an angle.
         /// </summary>
         /// <param name="rotation">The amount to rotate by.</param>
@@ -65,7 +77,7 @@ namespace MathUtils {
                 y = math.radians(angle.y),
                 z = math.radians(angle.z)
             };
-            return RotateAbout(quaternion.eulerXYZ(radianAngle), point - pivot) + pivot;
+            return RotateAbout(quaternion.EulerXYZ(radianAngle), point - pivot) + pivot;
         }
     }
 }
