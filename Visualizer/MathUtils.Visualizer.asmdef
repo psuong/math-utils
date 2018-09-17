@@ -1,0 +1,11 @@
+{
+    "name": "MathUtils.Visualizer",
+    "references": [
+        "MathUtils",
+        "Unity.Mathematics"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}
